@@ -8,7 +8,7 @@
  *
  * Dataset source: https://archive.ics.uci.edu/ml/datasets/wine+quality
  *
- * Total unique values 112
+ * Total unique values 114
  */
 
 public class DataLoader {
