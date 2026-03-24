@@ -1,12 +1,9 @@
 
 /**
- * WineDataLoader
- *
+ * WineDataLoader:
  * Provides the unique alcahole content values extrcted from the combined
  * red-wine (winequality-red.csv) and white-wine (winequality-white.csv) dataset
- *
  * Dataset source: https://archive.ics.uci.edu/ml/datasets/wine+quality
- *
  * Total unique values 112
  */
 
@@ -15,7 +12,6 @@ public class DataLoader {
     /**
      * Return a fresh copy of the 112 unique alcohole content values
      * (combined from red and withe wine datasets),sorted by value.
-     *
      * All sorting algorithms in this project sort the array IN-PLACE,
      * meaning they modify the original array directly
      * By returning a new array every time this method is called,
