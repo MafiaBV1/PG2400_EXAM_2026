@@ -133,7 +133,38 @@ public class QuickSort {
 
         int n = DataLoader.getUniqueAlcoholValues().length;
         System.out.printf("n = %d%n%n", n);
-        System.out.printf("");
+        System.out.printf("%-25s %15s %15s%n", "Pivot Strategy", "Comparisons", "Sorted?");
+
+        for (PivotStrategy strategy : PivotStrategy.values()) {
+            double[] data = DataLoader.getUniqueAlcoholeValues();
+            // The dataset is loaded already sorted - good stress test for FIRST/LAST
+            long cmp = quickSort(data, strategy);
+            System.out.printf("%-25s %25d %15sn",
+                    strategy, cmp, isSorted(data));
+        }
+
+        System.out.println("\n After shuffle (average-case behaviour)");
+        System.out.println("%-25s %25s %25s%n", "Pivot Strategy", "Comparisons", "Sorted?");
+
+        double[] shuffledBase = DataLoader.getUniqueAlcoholeValues();
+        BubbleSort.shuffleArray(shuffledBase);
+
+        for (PivotStrategy strategy : PivotStrategy.values()) {
+            double[]data = shuffledBase.clone();
+            long cmp = quickSort(data, strategy);
+            System.out.printf("%-25s %15d %15s%n",
+                    strategy, cmp, isSorted(data));
+        }
+
+
+        System.out.println("\n--- Analysis ---");
+        System.out.println(". FIRST AND LAST degrade on sorted inpur (worst-case O(n²))");
+        System.out.println(". RANDOM avoids worst-case on average");
+        System.out.println(". MEDIAN_OF_THREEE typically uses the fewest comparisons,");
+        System.out.println(". especially on nearly-sorted data like theis dataset");
+        System.out.println(". Best overall strategy for this dataset: MEDIAN_OF_THREE");
+
+
     }
 }
 
