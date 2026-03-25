@@ -136,7 +136,7 @@ public class QuickSort {
         System.out.printf("%-25s %15s %15s%n", "Pivot Strategy", "Comparisons", "Sorted?");
 
         for (PivotStrategy strategy : PivotStrategy.values()) {
-            double[] data = DataLoader.getUniqueAlcoholeValues();
+            double[] data = DataLoader.getUniqueAlcoholValues();
             // The dataset is loaded already sorted - good stress test for FIRST/LAST
             long cmp = quickSort(data, strategy);
             System.out.printf("%-25s %25d %15sn",
@@ -144,9 +144,9 @@ public class QuickSort {
         }
 
         System.out.println("\n After shuffle (average-case behaviour)");
-        System.out.println("%-25s %25s %25s%n", "Pivot Strategy", "Comparisons", "Sorted?");
+        System.out.printf("%-25s %25s %25s%n", "Pivot Strategy", "Comparisons", "Sorted?");
 
-        double[] shuffledBase = DataLoader.getUniqueAlcoholeValues();
+        double[] shuffledBase = DataLoader.getUniqueAlcoholValues();
         BubbleSort.shuffleArray(shuffledBase);
 
         for (PivotStrategy strategy : PivotStrategy.values()) {
