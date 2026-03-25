@@ -94,7 +94,7 @@ public class DataLoader {
         // TreeSet removes duplicates
         TreeSet<Double> uniqueValues = new TreeSet<>();
 
-        String[]files = {
+        String[] files = {
                 "src/res/winequality-red.csv",
                 "src/res/winequality-white.csv"
         };

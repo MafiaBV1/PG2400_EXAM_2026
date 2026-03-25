@@ -152,7 +152,7 @@ public class QuickSort {
         for (PivotStrategy strategy : PivotStrategy.values()) {
             double[]data = shuffledBase.clone();
             long cmp = quickSort(data, strategy);
-            System.out.printf("%-25s %15d %15s%n",
+            System.out.printf("%-20s %15d %10s\n",
                     strategy, cmp, isSorted(data));
         }
 
