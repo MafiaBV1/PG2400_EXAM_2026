@@ -95,8 +95,8 @@ public class DataLoader {
         TreeSet<Double> uniqueValues = new TreeSet<>();
 
         String[] files = {
-                "src/res/winequality-red.csv",
-                "src/res/winequality-white.csv"
+                "src/res/winequality-red.csv", // <- pass på at filen ligger i riktig fil bane
+                "src/res/winequality-white.csv" // <- pass på at filen ligger i riktig fil bane
         };
 
         for (String filename : files) {
@@ -111,7 +111,7 @@ public class DataLoader {
                         continue;
                     }
 
-                    // CSV uss smeicolon ; as separator
+                    // CSV uses smeicolon ; as separator
                     String[] columns = line.split(";");
 
                     // Alcohol is in column 11 (index 10)
