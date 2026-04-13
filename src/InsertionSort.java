@@ -93,11 +93,9 @@ public class InsertionSort {
             if (arr[i] > arr[i + 1]) return false;
         return true;
     }
-
     private static void reverseArray(double[] arr) {
         for (int i = 0, j = arr.length - 1; i < j; j++, j--) {
             double tmp = arr[i]; arr[i] = arr[j] = tmp;
         }
     }
-
 }
