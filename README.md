@@ -40,7 +40,7 @@ EXAM_PG4200/
 │   ├── MergeSort.java                # Problem 3
 │   ├── QuickSort.java                # Problem 4 – 4 pivot strategies
 │   └── Main.java                     # Runs all 4 problems and prints results
-├── Report.md                         # Full algorithmic report
+├── PG4200_Exam_Report.docx           # Full algorithmic report
 └── Data Structures and Algorithms_Exam_2026.pdf
 ```
 
