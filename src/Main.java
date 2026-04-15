@@ -87,22 +87,17 @@ public class Main {
 
         // ── Problem 4: QuickSort ──────────────────────────────────────────────
         header("Problem 4: QuickSort");
-
         System.out.printf("%n  %-20s  %15s  %15s  %s%n", "Pivot Strategy", "Sorted input", "Shuffled input", "Correct?");
         System.out.println("  " + "-".repeat(60));
-
         for (QuickSort.PivotStrategy strategy : QuickSort.PivotStrategy.values()) {
             double[] sortedRun   = base.clone();
             double[] shuffledRun = shuffled.clone();
-
             long cmpSorted   = QuickSort.quickSort(sortedRun,   strategy);
             long cmpShuffled = QuickSort.quickSort(shuffledRun, strategy);
-
             System.out.printf("  %-20s  %15d  %15d  %s%n",
                     strategy, cmpSorted, cmpShuffled,
                     isSorted(sortedRun) && isSorted(shuffledRun) ? "yes" : "NO");
         }
-
         System.out.println("\n  FIRST/LAST degrade to O(n²) on sorted input.");
         System.out.println("  RANDOM avoids worst-case on average.");
         System.out.println("  MEDIAN_OF_THREE gives the fewest comparisons on this nearly-sorted dataset.");

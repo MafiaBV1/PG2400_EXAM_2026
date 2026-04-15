@@ -70,20 +70,22 @@ public class InsertionSort {
                 + " <- best-case O(n), n-1 = " + (data1.length - 1));
         System.out.println("    Sorted correctly: " + isSorted(data1));
 
-        // Shuffled input (arverage/worst case)
+        // Shuffled input (average case)
         double[] data2 = DataLoader.getUniqueAlcoholValues();
+        BubbleSort.shuffleArray(data2);
         long cmp2 = insertionSort(data2);
-        System.out.println("InsertionSort (original/already-sorted order):");
+        System.out.println("InsertionSort (shuffled input -> average case):");
         System.out.println("    Comparisons: " + cmp2);
         System.out.println("    Sorted correctly: " + isSorted(data2));
 
-        // Revers sorted
+        // Reverse sorted (worst case)
         double[] data3 = DataLoader.getUniqueAlcoholValues();
+        reverseArray(data3);
         long cmp3 = insertionSort(data3);
         System.out.println("InsertionSort (reverse sorted -> worst case):");
         System.out.println("    Comparisons: " + cmp3);
         long n = data3.length;
-        System.out.println(" Expected n*(n-1)/2 =" + (n * (n-1) / 2));
+        System.out.println(" Expected n*(n-1)/2 = " + (n * (n-1) / 2));
         System.out.println(" Sorted correctly: " + isSorted(data3));
     }
 
@@ -94,8 +96,8 @@ public class InsertionSort {
         return true;
     }
     private static void reverseArray(double[] arr) {
-        for (int i = 0, j = arr.length - 1; i < j; j++, j--) {
-            double tmp = arr[i]; arr[i] = arr[j] = tmp;
+        for (int i = 0, j = arr.length - 1; i < j; i++, j--) {
+            double tmp = arr[i]; arr[i] = arr[j]; arr[j] = tmp;
         }
     }
 }

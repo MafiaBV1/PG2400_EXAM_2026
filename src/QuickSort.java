@@ -1,6 +1,6 @@
 import java.util.Random;
-import static java.util.Collections.sort;
-import static java.util.Collections.swap;
+//import static java.util.Collections.sort;
+//import static java.util.Collections.swap;
 
 /**
  * Task 4: QuickSort (25 Marks)
@@ -139,7 +139,7 @@ public class QuickSort {
             double[] data = DataLoader.getUniqueAlcoholValues();
             // The dataset is loaded already sorted - good stress test for FIRST/LAST
             long cmp = quickSort(data, strategy);
-            System.out.printf("%-25s %25d %15sn",
+            System.out.printf("%-25s %25d %15s%n",
                     strategy, cmp, isSorted(data));
         }
 
@@ -155,8 +155,6 @@ public class QuickSort {
             System.out.printf("%-20s %15d %10s\n",
                     strategy, cmp, isSorted(data));
         }
-
-
         System.out.println("\n--- Analysis ---");
         System.out.println(". FIRST AND LAST degrade on sorted inpur (worst-case O(n²))");
         System.out.println(". RANDOM avoids worst-case on average");
