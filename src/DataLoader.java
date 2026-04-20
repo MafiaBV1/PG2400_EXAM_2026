@@ -60,7 +60,6 @@ public class DataLoader {
                 System.err.println("Error reading file: " + filename);
             }
         }
-
         // Convert TreeSet to double[]
         double[] result = new double[uniqueValues.size()];
         int i = 0;

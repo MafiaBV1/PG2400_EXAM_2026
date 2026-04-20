@@ -27,7 +27,6 @@ public class BubbleSort {
         int n = arr.length;
         int comparisons = 0;
         boolean swapped;
-
         for (int i = 0; i < n - 1; i++) {
             swapped = false;
 
@@ -46,7 +45,6 @@ public class BubbleSort {
                 break;
             }
         }
-
         return comparisons;
     }
 
@@ -69,6 +67,8 @@ public class BubbleSort {
         return true;
     }
 
+
+    // ─── main ─────────────────────────────────────────────
     public static void main(String[] args) {
         System.out.println("Problem 1: BubbleSort");
         System.out.println("Dataset: 112 unique alcohol content values (combined red + white wine)");

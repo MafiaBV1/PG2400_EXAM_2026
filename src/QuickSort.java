@@ -33,7 +33,7 @@ import java.util.Random;
  *      1. Our dataset is nearly sorted (unique values loaded in order)
  *      2. FITST and LAST degrade to O(n²) on sorted data
  *      3. Median-of-three reliably selects a pivot near the true median,
- *         producing balanced partitions close to O8n log n)
+ *         producing balanced partitions close to O(n log n)
  *      4. RANDOM is also good on average but has variance; Median-of-three
  *         is more predivtable and consistent
  */

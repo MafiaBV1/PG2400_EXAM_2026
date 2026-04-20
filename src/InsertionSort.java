@@ -58,6 +58,7 @@ public class InsertionSort {
         return comparisons;
     }
 
+    // ─── main ─────────────────────────────────────────────
     public static void main (String[] args) {
         System.out.println("\nProblem 2: InsertionSort ");
         System.out.println("Dataset: 112 unique alcohol content vlaues (combuned red + whitewine\n");

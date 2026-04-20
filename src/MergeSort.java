@@ -33,19 +33,26 @@
 
 public class MergeSort {
 
-    // Shared conter (rest before each sort)
-    private static long mergeOperations = 0;
+    // Shared counters (reset before each sort)
+    private static long mergeOperations  = 0;
+    private static long mergeComparisons = 0;
 
     /**
-     * Public entry point: sort ar in ascending order
+     * Public entry point: sort arr in ascending order
      *
      * @param arr array to sort in-place
      * @return number of merge operations performed
      */
     public static long mergeSort(double[] arr) {
-        mergeOperations = 0;
+        mergeOperations  = 0;
+        mergeComparisons = 0;
         sort(arr, 0, arr.length - 1);
         return mergeOperations;
+    }
+
+    /** Returns the number of element comparisons made during the last mergeSort() call. */
+    public static long getLastComparisonCount() {
+        return mergeComparisons;
     }
 
     // ─── Recursive sort ───────────────────────────────────────────
@@ -54,14 +61,14 @@ public class MergeSort {
         int mid = left + (right - left) / 2;
 
         sort(arr, left, mid);               // sort left half
-        sort(arr, mid + 1, right);     // sort right half
-        merge(arr, left, mid, right);      // merge the two sorted halves
+        sort(arr, mid + 1, right);          // sort right half
+        merge(arr, left, mid, right);       // merge the two sorted halves
     }
 
     // ─── Merge two sorted sub-arrays ─────────────────────────────
     /**
      * Merges arr[left..mid] and arr[mid+1..right] into sorted order
-     * Increments mergeOperations by 1
+     * Increments mergeOperations by 1 and counts element comparisons
      */
     private static void merge(double[] arr, int left, int mid, int right) {
         mergeOperations++;      // count this merge operation
@@ -70,21 +77,22 @@ public class MergeSort {
         int rightSize = right - mid;
 
         // Temporary arrays
-        double[] leftArr = new  double[leftSize];
-        double[] rightArr = new  double[rightSize];
+        double[] leftArr  = new double[leftSize];
+        double[] rightArr = new double[rightSize];
 
-        System.arraycopy(arr, left,             leftArr,    0, leftSize);
-        System.arraycopy(arr, mid + 1,  rightArr,    0, rightSize);
+        System.arraycopy(arr, left,      leftArr,  0, leftSize);
+        System.arraycopy(arr, mid + 1,   rightArr, 0, rightSize);
 
         int i = 0, j = 0, k = left;
         while (i < leftSize && j < rightSize) {
+            mergeComparisons++;             // count each element comparison
             if (leftArr[i] <= rightArr[j]) {
                 arr[k++] = leftArr[i++];
             } else {
                 arr[k++] = rightArr[j++];
             }
         }
-        while (i < leftSize) arr[k++] = leftArr[i++];
+        while (i < leftSize)  arr[k++] = leftArr[i++];
         while (j < rightSize) arr[k++] = rightArr[j++];
     }
 
@@ -99,24 +107,26 @@ public class MergeSort {
         // Already sorted input
         double[] data1 = DataLoader.getUniqueAlcoholValues();
         long ops1 = mergeSort(data1);
+        long cmp1 = getLastComparisonCount();
         System.out.println("\nMergeSort (original/already-sorted order):");
         System.out.println(" Merge operations : " + ops1);
+        System.out.println(" Comparisons      : " + cmp1);
         System.out.println(" Sorted correctly : " + isSorted(data1));
 
         // Shuffled input
         double[] data2 = DataLoader.getUniqueAlcoholValues();
         BubbleSort.shuffleArray(data2);
         long ops2 = mergeSort(data2);
+        long cmp2 = getLastComparisonCount();
         System.out.println("\nMergeSort (after shuffle):");
         System.out.println(" Merge operations : " + ops2);
+        System.out.println(" Comparisons      : " + cmp2);
         System.out.println(" Sorted correctly : " + isSorted(data2));
-
 
         System.out.println("\n--- Analysis ---");
         System.out.println("Merge operation count is ALWAYS n-1 = " + (n - 1));
         System.out.println("Shuffling dose NOT change the number of merge operations");
-        System.out.println("Time complexity: =(n log n) in all cases");
-
+        System.out.println("Time complexity: O(n log n) in all cases");
 
         // Show first and last 5 sorted vlaues
         System.out.printf("\nFirst 5 sorted vlaues: ");
@@ -126,11 +136,10 @@ public class MergeSort {
         System.out.println();
     }
 
-
     // ─── Helpers ──────────────────────────────────────────────────
     private static boolean isSorted(double[] arr) {
         for (int i = 0; i < arr.length - 1; i++)
-            if (arr[i] > arr[i + 1]) return  false;
+            if (arr[i] > arr[i + 1]) return false;
         return true;
     }
 }
